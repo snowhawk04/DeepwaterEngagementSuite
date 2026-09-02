@@ -178,7 +178,8 @@ public partial class DeepwaterEngagementSuite
     private void RenderTrailOverlay(bool largePanelsOpen)
     {
         if (!Settings.TrailSettings.Enabled ||
-            largePanelsOpen)
+            largePanelsOpen ||
+            GameController.EntityListWrapper.ValidEntitiesByType[EntityType.Stash].Any(x => x.DistancePlayer < 200))
         {
             return;
         }

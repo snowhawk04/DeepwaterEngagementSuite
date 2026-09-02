@@ -646,8 +646,8 @@ public partial class DeepwaterEngagementSuite : BaseSettingsPlugin<DeepwaterEnga
 
         RenderTrailOverlay(largePanelsOpen);
 
-        if (!largePanelsOpen && (Settings.BubbleSettings.ShowBubblesOnMap ||
-                                 Settings.BubbleSettings.ShowBubblesInWorld))
+        if (!largePanelsOpen && !GameController.EntityListWrapper.ValidEntitiesByType[EntityType.Stash].Any(x => x.DistancePlayer < 200) &&
+            (Settings.BubbleSettings.ShowBubblesOnMap || Settings.BubbleSettings.ShowBubblesInWorld))
         {
             if (Bubbles is { Count: > 0 } bubbles)
             {
